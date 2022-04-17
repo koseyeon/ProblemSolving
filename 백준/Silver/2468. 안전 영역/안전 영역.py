@@ -1,9 +1,7 @@
 n = int(input())
 map_ = []
-max_ = 0
 for _ in range(n):
   l = list(map(int,input().split()))
-  max_ = max(max_,max(l))
   map_.append(l)
 dx = [0,1,0,-1]
 dy = [1,0,-1,0]
