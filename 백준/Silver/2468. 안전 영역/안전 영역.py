@@ -25,7 +25,7 @@ def dfs(rain):
             if cango(nx,ny,rain,visited):
               s.append([nx,ny])
               visited[nx][ny]=1
-        cnt += 1
+        cnt+= 1
   return cnt
 ans = 0
 for rain in range(0,101):
