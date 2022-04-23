@@ -8,6 +8,8 @@ def dfs(x,y,state,cnt):
   while s:
     x,y,state,cnt = s.pop()
     ans = max(ans,cnt)
+    if cnt == 26:
+      return
     for i in range(4):
       nx,ny = x+dx[i],y+dy[i]
       if cango(nx,ny,state):
