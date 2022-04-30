@@ -1,0 +1,29 @@
+def change(t):
+  return min(ord('Z')-ord(t)+1,ord(t)-ord("A"))
+def solution(name):
+    answer = 10**9
+    targets = []
+    for i in range(len(name)):
+      if name[i]!='A':
+        targets.append(i)
+    s = [[0,0,0,targets[:]]]
+    while s:
+      now,cnt,ch_cnt,tar = s.pop()
+      if now>=len(name) or now<0 or cnt>=20:
+        continue
+      if now in tar:
+        ch_cnt += change(name[now])
+        tar.remove(now)
+      if len(tar)==0:
+        answer  = min(answer,cnt+ch_cnt)
+        continue
+      if now == len(name)-1:
+        s.append([0,cnt+1,ch_cnt,tar[:]])
+      else:
+        s.append([now+1,cnt+1,ch_cnt,tar[:]])
+      if now == 0:
+        s.append([len(name)-1,cnt+1,ch_cnt,tar[:]])
+      else:
+        s.append([now-1,cnt+1,ch_cnt,tar[:]])
+    return answer
+print(solution("AAAB"))
