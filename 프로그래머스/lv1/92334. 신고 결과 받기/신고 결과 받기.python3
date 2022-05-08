@@ -1,0 +1,19 @@
+def solution(id_list, report, k):
+    answer = []
+    reported = {}
+    user={}
+    for id in id_list:
+      reported[id]=0
+      user[id]=[]
+    for r in report:
+      a,b = r.split()
+      if b not in user[a]:
+        user[a].append(b)
+        reported[b]+=1
+    for key in user.keys():
+      cnt = 0
+      for id in user[key]:
+        if reported[id]>=k:
+          cnt+=1
+      answer.append(cnt)  
+    return answer
