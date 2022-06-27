@@ -1,0 +1,23 @@
+def solution(s):
+    answer = ''
+    temp = ''
+    num_dict = {}
+    num_dict['zero']='0'
+    num_dict['one']='1'
+    num_dict['two']='2'
+    num_dict['three']='3'
+    num_dict['four']='4'
+    num_dict['five']='5'
+    num_dict['six']='6'
+    num_dict['seven']='7'
+    num_dict['eight']='8'
+    num_dict['nine']='9'
+    for i in range(len(s)):
+        if 48<=ord(s[i])<=57:
+            answer+=s[i]
+        else:
+            temp+=s[i]
+            if temp in num_dict.keys():
+                answer+=num_dict[temp]
+                temp=''
+    return int(answer)
