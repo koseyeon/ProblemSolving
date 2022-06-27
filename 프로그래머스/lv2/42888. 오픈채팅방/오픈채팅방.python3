@@ -1,0 +1,26 @@
+def solution(record):
+    answer = []
+    user_list = {}
+    Enter_msg = "님이 들어왔습니다."
+    Leave_msg = "님이 나갔습니다."
+    for r in record:
+        t = list(r.split())
+        if len(t)>=3:
+            kind,user_id,nick_name = t
+        else:
+            kind,user_id = t
+        if kind == "Enter":
+            user_list[user_id] = nick_name
+        elif kind == "Change":
+            user_list[user_id] = nick_name
+    for r in record:
+        t = list(r.split())
+        if len(t)>=3:
+            kind,user_id,nick_name = t
+        else:
+            kind,user_id = t
+        if kind == "Enter":
+            answer.append(user_list[user_id]+Enter_msg)
+        if kind == "Leave":
+            answer.append(user_list[user_id]+Leave_msg)
+    return answer
