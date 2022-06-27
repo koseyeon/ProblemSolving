@@ -1,0 +1,40 @@
+def solution(new_id):
+    char_list = [chr(i) for i in range(97,123)]
+    num_list = [chr(i) for i in range(48,58)]
+    remove_set = char_list + num_list + ['-','_','.']
+    temp = new_id
+    step1 = temp.lower()
+    temp = ''
+    for s in step1:
+        if s in remove_set:
+            temp+=s
+    step2 = temp
+    temp = ''
+    for i in range(len(step2)):
+        if i+1<=len(step2)-1 and step2[i]=='.' and step2[i+1]=='.':
+            continue
+        else:
+            temp+=step2[i]
+    step3 = temp
+    temp = step3
+    if len(step3)>0:
+        if step3[0]=='.':
+            temp = temp[1:]
+        if step3[-1]=='.':
+            temp = temp[:-1]
+    step4 = temp
+    temp = step4
+    step5 = ''
+    if len(temp)==0:
+        step5 = 'a'
+    else:
+        step5 = temp
+    step6 = step5
+    if len(step6)>=16:
+        step6 = step6[:15]
+    if step6[-1]=='.':
+        step6 = step6[:-1]
+    if len(step6)<=2:
+        while len(step6)<=2:
+            step6+=step6[-1]
+    return step6
