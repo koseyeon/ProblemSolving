@@ -1,0 +1,12 @@
+def solution(n):
+    result = []
+    while n:
+        s , r = divmod(n,3)
+        if r == 0:
+            result.append(str(4))
+            n = s-1
+        else:
+            result.append(str(r))
+            n = s
+    answer = "".join(result[::-1])
+    return answer
