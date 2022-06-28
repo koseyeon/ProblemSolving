@@ -1,0 +1,16 @@
+answer = 0
+
+def backtracking(nums,result,target):
+    global answer
+    if len(nums)==0:
+        if result == target:
+            answer+=1
+        return
+    a = nums.pop()
+    backtracking(nums[:],result+a,target)
+    backtracking(nums[:],result-a,target)
+    
+def solution(numbers, target):
+    num = 0
+    backtracking(numbers,0,target)
+    return answer
