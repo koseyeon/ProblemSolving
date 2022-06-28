@@ -1,0 +1,17 @@
+def solution(progresses, speeds):
+    answer = []
+    now = 0
+    until = False
+    while now<=len(progresses)-1:
+        count = 0
+        for i in range(now,len(progresses)):
+            progresses[i] += speeds[i]
+        while now<=len(progresses)-1:
+            if progresses[now]>=100:
+                count += 1
+                now += 1
+            else:
+                break
+        if count != 0:
+            answer.append(count)
+    return answer
