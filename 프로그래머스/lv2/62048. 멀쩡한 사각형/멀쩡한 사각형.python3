@@ -1,0 +1,10 @@
+import math
+def solution(w,h):
+    h, w = max(h,w), min(h,w)
+    g = math.gcd(h,w)
+    r = h/w
+    cnt = 0
+    for i in range(w//g):
+        cnt += (math.ceil(r*(i+1)-0.000000001) if i<w//g else h//g) - math.floor(r*i+0.000000001)
+    answer = w*h - cnt*g
+    return answer
