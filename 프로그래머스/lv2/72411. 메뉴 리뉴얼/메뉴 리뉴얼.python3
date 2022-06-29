@@ -1,0 +1,23 @@
+from itertools import combinations
+from collections import defaultdict
+def solution(orders, course):
+    answer = []
+    ordered = defaultdict(int)
+    for order in orders:
+        for num in course:
+            for c in combinations(sorted(list(order)),num):
+                ordered[''.join(list(c))]+=1
+    for num in course:
+        candi = []
+        biggest = 2
+        for key in ordered.keys():
+            if len(key) == num:
+                if ordered[key]>biggest:
+                    candi = [key]
+                    biggest = ordered[key]
+                elif ordered[key]==biggest:
+                    candi.append(key)
+        for c in candi:
+            answer.append(c)
+        answer.sort()
+    return answer
