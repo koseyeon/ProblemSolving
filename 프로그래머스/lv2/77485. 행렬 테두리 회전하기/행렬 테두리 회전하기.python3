@@ -1,0 +1,37 @@
+board = []
+def rotate(x1,y1,x2,y2):
+    line1 = board[x1][y1:y2]
+    line2 = [ board[i][y2] for i in range(x1,x2)]
+    line3 = board[x2][y2:y1:-1]
+    line4 = [ board[i][y1] for i in range(x2,x1,-1)]
+    value = 10**9
+    for x in line1:
+        value = min(x,value)
+    for x in line2:
+        value = min(x,value)
+    for x in line3:
+        value = min(x,value)
+    for x in line4:
+        value = min(x,value)
+    for i in range(y2,y1,-1):
+        board[x1][i]=line1.pop()
+    for i in range(x2,x1,-1):
+        board[i][y2]=line2.pop()
+    for i in range(y1,y2):
+        board[x2][i]=line3.pop()
+    for i in range(x1,x2):
+        board[i][y1]=line4.pop()
+    return value
+def solution(rows, columns, queries):
+    answer = []
+    n = 1
+    for i in range(rows):
+        t = []
+        for j in range(columns):
+            t.append(n)
+            n+=1
+        board.append(t)
+    for q in queries:
+        x1,y1,x2,y2 = q
+        answer.append(rotate(x1-1,y1-1,x2-1,y2-1))
+    return answer
