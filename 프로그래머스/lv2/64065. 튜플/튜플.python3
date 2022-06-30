@@ -1,0 +1,27 @@
+def solution(s):
+    answer = []
+    s_list = []
+    temp = []
+    i = 2
+    while i<len(s)-1: 
+        if s[i-1]=='{':
+            n = ''
+            while s[i]!='}':
+                if s[i].isdigit():
+                    n += s[i]
+                else:
+                    temp.append(int(n))
+                    n = ''
+                i+=1
+            if s[i]=='}' and len(n)!=0:
+                temp.append(int(n))
+                n = ''
+            s_list.append(temp)
+            temp = []
+        i+=1
+    s_list.sort(key = lambda x: len(x))
+    for a in s_list:
+        for b in a:
+            if b not in answer:
+                answer.append(b)
+    return answer
