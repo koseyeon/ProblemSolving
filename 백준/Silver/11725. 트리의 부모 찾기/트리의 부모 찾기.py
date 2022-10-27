@@ -1,3 +1,5 @@
+import sys
+input = sys.stdin.readline
 n = int(input())
 parents = [0]*(n+1)
 graph = {}
