@@ -16,25 +16,19 @@ def adj_water(x,y):
     return cnt
 
 year = 0
-
-search_list = []
-for i in range(N):
-    for j in range(M):
-        if grid[i][j] > 0:
-            search_list.append([i,j])
-
 while True:
-    year += 1
     new_grid = [[0]*M for _ in range(N)]
-    new_search_list = []
-    for i,j in search_list:
-        if grid[i][j] > 0:
-            new_grid[i][j] = max(0,grid[i][j] - adj_water(i,j))
-            if new_grid[i][j] > 0:
-                new_search_list.append([i,j])
+    year += 1
+    search_list = []
+    for i in range(N):
+        for j in range(M):
+            if grid[i][j] > 0:
+                new_grid[i][j] = max(0,grid[i][j] - adj_water(i,j))
+                if new_grid[i][j] > 0:
+                    search_list.append([i,j])
     visited = [[0]*M for _ in range(N)]
     cnt = 0
-    for i,j in new_search_list:
+    for i,j in search_list:
         if not visited[i][j] and new_grid[i][j] > 0 :
             visited[i][j] = 1
             v = [[i,j]]
@@ -51,7 +45,6 @@ while True:
         break
     elif cnt == 1:
         grid = new_grid
-        search_list = new_search_list
         continue
     elif cnt > 1:
         print(year)
